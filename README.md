@@ -1,4 +1,4 @@
-## DNS Troubleshooting Lab
+# DNS Troubleshooting Lab
 
 In this lab, I simulated a common IT support issue where a user has network connectivity but cannot access domain resources due to a DNS misconfiguration.
 
@@ -64,7 +64,7 @@ This time, the domain resolved successfully, confirming the issue was fixed.
 
 This lab helped me understand how to diagnose and resolve real-world network issues in a domain environment.
 
-## No Network Connectivity Lab
+# No Network Connectivity Lab
 
 In this lab, I simulated a complete network failure on a Windows 11 client and troubleshot the issue step by step.
 

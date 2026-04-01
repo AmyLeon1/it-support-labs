@@ -63,3 +63,82 @@ This time, the domain resolved successfully, confirming the issue was fixed.
 - Step-by-step troubleshooting helps isolate the root cause  
 
 This lab helped me understand how to diagnose and resolve real-world network issues in a domain environment.
+
+## No Network Connectivity Lab
+
+In this lab, I simulated a complete network failure on a Windows 11 client and troubleshot the issue step by step.
+
+---
+
+### Breaking the Network
+
+On the Windows 11 client, I disabled the network adapter to simulate a user having no connectivity.
+
+![Network Disabled](screenshots/network-disabled.png)
+
+---
+
+### Observing the Issue
+
+I tested connectivity using:
+
+ping <Server-IP>
+
+The request failed, confirming there was no network connection.
+
+I was also unable to access shared resources such as:
+
+\\<Server-IP>\IT-Shared
+
+![Ping Failure](screenshots/no-network-ping-fail.png)
+
+---
+
+### Troubleshooting
+
+I checked the network configuration using:
+
+ipconfig
+
+This showed that the system was not properly connected to a network.
+
+![IPConfig No Network](screenshots/ipconfig-no-network.png)
+
+I then checked the network adapter settings and identified that the Ethernet adapter was disabled.
+
+---
+
+### Fixing the Issue
+
+I re-enabled the network adapter using:
+
+ncpa.cpl
+
+After enabling the adapter, the system reconnected to the network.
+
+![Network Enabled](screenshots/network-enabled.png)
+
+---
+
+### Verifying the Fix
+
+I tested connectivity again using:
+
+ping <Server-IP>
+
+This time the ping was successful, confirming the issue was resolved.
+
+I was also able to access shared resources again.
+
+![Network Fixed](screenshots/network-fixed.png)
+
+---
+
+### What I learned
+
+- How to identify a complete network failure  
+- The difference between network issues (no connectivity) and DNS issues (partial connectivity)  
+- How to use `ping` and `ipconfig` to troubleshoot connectivity problems  
+- How to check and manage network adapters  
+
+This lab helped me understand how to diagnose and resolve basic network issues in a real IT support scenario.

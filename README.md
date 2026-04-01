@@ -26,7 +26,7 @@ The ping was successful, confirming that the network connection was working.
 
 However, when testing DNS resolution using:
 
-nslookup corp.local
+nslookup 
 
 The request failed, indicating that DNS was not resolving correctly.
 
@@ -46,7 +46,7 @@ I corrected the DNS settings by setting the preferred DNS server to the domain c
 
 After updating the DNS settings, I tested again using:
 
-nslookup corp.local
+nslookup 
 
 This time, the domain resolved successfully, confirming the issue was fixed.
 

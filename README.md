@@ -1,3 +1,8 @@
+## Table of Contents
+
+- [DNS Troubleshooting Lab](#dns-troubleshooting-lab)
+- [No Network Connectivity Lab](#no-network-connectivity-lab)
+
 # DNS Troubleshooting Lab
 
 In this lab, I simulated a common IT support issue where a user has network connectivity but cannot access domain resources due to a DNS misconfiguration.

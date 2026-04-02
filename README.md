@@ -2,7 +2,9 @@
 
 - [DNS Troubleshooting Lab](#dns-troubleshooting-lab)
 - [No Network Connectivity Lab](#no-network-connectivity-lab)
-- - [GPO Not Applying Lab](#gpo-not-applying-lab)
+- [GPO Not Applying Lab](#gpo-not-applying-lab)
+- [Shared Folder Access Troubleshooting Lab](#shared-folder-access-troubleshooting-lab)
+- [Account Lockout Investigation Lab](#account-lockout-investigation-lab)
 
 ## DNS Troubleshooting Lab
 

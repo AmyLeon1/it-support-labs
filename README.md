@@ -256,3 +256,81 @@ I tested access again from the Windows 11 client and was able to successfully op
 - Accessing a resource via network path helps confirm connectivity  
 
 This lab helped me understand how to diagnose and resolve file sharing issues in a domain environment.
+
+## Account Lockout Investigation Lab
+
+In this lab, I simulated and investigated a user account lockout in an Active Directory environment.
+
+---
+
+### Triggering the Lockout
+
+On the Windows 11 client, I entered an incorrect password multiple times until the account reached the configured lockout threshold.
+
+This resulted in the account being locked.
+
+![Account Locked](screenshots/account-locked-message.png)
+
+---
+
+### Confirming on Active Directory
+
+On the Windows Server, I opened Active Directory Users and Computers and checked the user account.
+
+The account was shown as locked, confirming the lockout.
+
+![Account Locked in AD](screenshots/account-locked-ad.png)
+
+---
+
+### Enabling Audit Logging
+
+Initially, failed login events were not visible in Event Viewer.
+
+To investigate properly, I enabled auditing in Group Policy:
+
+Computer Configuration → Policies → Windows Settings → Security Settings → Local Policies → Audit Policy → Audit logon events
+
+I enabled both Success and Failure logging.
+
+![Audit Policy Enabled](screenshots/audit-policy-enabled.png)
+
+---
+
+### Investigating Failed Logins
+
+After applying the policy and triggering failed logins again, I used Event Viewer on the client:
+
+Event Viewer → Windows Logs → Security
+
+I identified failed login attempts using:
+
+Event ID 4625
+
+![Failed Login Events](screenshots/failed-login-events.png)
+
+---
+
+### Fixing the Issue
+
+On the server, I unlocked the user account via:
+
+Active Directory Users and Computers → User Properties → Account → Unlock account
+
+---
+
+### Verifying the Fix
+
+I logged back into the Windows 11 client using the correct password, confirming the issue was resolved.
+
+---
+
+### What I learned
+
+- How account lockout policies work in Active Directory  
+- How to identify and investigate failed login attempts  
+- How to enable audit logging to gain visibility into security events  
+- How to use Event Viewer to analyse login activity  
+- How to unlock user accounts and restore access  
+
+This lab helped me understand how account lockouts occur and how to investigate them, which is important for both IT support and security monitoring.

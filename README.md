@@ -2,6 +2,7 @@
 
 - [DNS Troubleshooting Lab](#dns-troubleshooting-lab)
 - [No Network Connectivity Lab](#no-network-connectivity-lab)
+- - [GPO Not Applying Lab](#gpo-not-applying-lab)
 
 ## DNS Troubleshooting Lab
 
@@ -147,3 +148,111 @@ I was also able to access shared resources again.
 - How to check and manage network adapters  
 
 This lab helped me understand how to diagnose and resolve basic network issues in a real IT support scenario.
+
+## GPO Not Applying Lab
+
+In this lab, I simulated a common issue where a Group Policy Object (GPO) was not being applied to a user.
+
+---
+
+### Breaking the Policy Application
+
+On the server, I moved the user `amy.admin` out of the `IT-Team` Organizational Unit (OU), where the GPO was originally linked.
+
+This caused the policy to no longer apply to the user.
+
+---
+
+### Testing the Issue
+
+On the Windows 11 client, I logged in as `corp\amy.admin` and attempted to access the Control Panel.
+
+The Control Panel opened successfully, confirming that the GPO restriction was no longer applied.
+
+![GPO Not Applied](screenshots/gpo-not-applied.png)
+
+---
+
+### Fixing the Issue
+
+I moved the user back into the `IT-Team` OU on the server.
+
+Then, on the client, I refreshed Group Policy using:
+
+gpupdate /force
+
+---
+
+### Verifying the Fix
+
+After updating the policy, I tested again by trying to open the Control Panel.
+
+Access was now blocked, confirming that the GPO was correctly applied.
+
+![GPO Fixed](screenshots/gpo-fixed.png)
+
+---
+
+### What I learned
+
+- GPOs are applied based on the user’s OU location  
+- Moving a user out of an OU can prevent policies from applying  
+- `gpupdate /force` can be used to refresh policies immediately  
+- Troubleshooting GPO issues requires checking OU structure and policy scope  
+
+This lab helped me understand how to diagnose and resolve Group Policy issues in a domain environment.
+
+## Shared Folder Access Troubleshooting Lab
+
+In this lab, I simulated a shared folder access issue and troubleshot the problem from both the client and server side.
+
+---
+
+### Breaking Access
+
+On the server, I modified the shared folder configuration by stopping sharing or removing permissions from the `IT-Shared` folder.
+
+---
+
+### Testing the Issue
+
+On the Windows 11 client, I attempted to access the shared folder using:
+
+\\<Server-IP>\IT-Shared
+
+The request failed, confirming that the user could not access the resource.
+
+![Shared Folder Failure](screenshots/shared-folder-fail.png)
+
+---
+
+### Troubleshooting
+
+I identified that the issue was not related to network connectivity, as the server was reachable.
+
+I then checked the shared folder settings on the server and found that sharing or permissions had been removed.
+
+---
+
+### Fixing the Issue
+
+I re-enabled sharing on the folder and restored the appropriate permissions for the user/group.
+
+---
+
+### Verifying the Fix
+
+I tested access again from the Windows 11 client and was able to successfully open the shared folder.
+
+![Shared Folder Fixed](screenshots/shared-folder-fixed.png)
+
+---
+
+### What I learned
+
+- Shared folder access depends on both network connectivity and server-side configuration  
+- Issues can occur if sharing is disabled or permissions are misconfigured  
+- Troubleshooting requires checking both client and server sides  
+- Accessing a resource via network path helps confirm connectivity  
+
+This lab helped me understand how to diagnose and resolve file sharing issues in a domain environment.
